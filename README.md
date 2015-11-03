@@ -1,8 +1,16 @@
+paper-input-select
+===================
+
+paper-input-select is an advanced paper-dropdown-menu.
+
+WARNING! In development. Not ready.
+
+---
 
 <!---
 
 This README is automatically generated from the comments in these files:
-iron-dropdown.html
+iron-input-select-dropdown.html
 
 Edit those files, and our readme bot will duplicate them over here!
 Edit this file, and the bot will squash your changes :)
@@ -38,5 +46,3 @@ configured.
 In the above example, the `<div>` with class `.dropdown-content` will be
 hidden until the dropdown element has `opened` set to true, or when the `open`
 method is called on the element.
-
-
