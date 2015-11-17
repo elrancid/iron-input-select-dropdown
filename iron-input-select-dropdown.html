@@ -190,6 +190,11 @@ method is called on the element.
            */
           _positionRectMemo: {
             type: Object
+          },
+
+          debug: {
+            type: Boolean,
+            value: false
           }
         },
 
@@ -218,13 +223,13 @@ method is called on the element.
          * The element that should be focused when the dropdown opens.
          */
         get _focusTarget() {
-          console.log('iron-input-select-dropdown.get _focusTarget... this.focusTarget:',this.focusTarget);
+          if (this.debug) console.log('iron-input-select-dropdown.get _focusTarget... this.focusTarget:',this.focusTarget);
 //          console.log('iron-input-select-dropdown.get _focusTarget... this.containedElement:',this.containedElement);
           return this.focusTarget || this.containedElement;
         },
 
         focusTargetChanged: function(to, from) {
-          console.log('iron-input-select-dropdown.focusTargetChanged to:',to);
+          if (this.debug) console.log('iron-input-select-dropdown.focusTargetChanged to:',to);
         },
 
         /**
@@ -292,7 +297,7 @@ method is called on the element.
          * @param {boolean} opened True if the dropdown is opened.
          */
         _openedChanged: function(opened) {
-          console.debug('iron-input-select-dropdown._openedChanged() opened:',opened);
+          if (this.debug) console.debug('iron-input-select-dropdown._openedChanged() opened:',opened);
           if (opened && this.disabled) {
             this.cancel();
           } else {
@@ -310,7 +315,7 @@ method is called on the element.
          * Overridden from `IronOverlayBehavior`.
          */
         _renderOpened: function() {
-          console.debug('iron-input-select-dropdown._renderOpened()');
+          if (this.debug) console.debug('iron-input-select-dropdown._renderOpened()');
 //          if (!this.allowOutsideScroll) {
 //            Polymer.IronDropdownScrollManager.pushScrollLock(this);
 //          }
@@ -327,7 +332,7 @@ method is called on the element.
          * Overridden from `IronOverlayBehavior`.
          */
         _renderClosed: function() {
-          console.debug('iron-input-select-dropdown._renderClosed()');
+          if (this.debug) console.debug('iron-input-select-dropdown._renderClosed()');
 //          Polymer.IronDropdownScrollManager.removeScrollLock(this);
           if (!this.noAnimations && this.animationConfig && this.animationConfig.close) {
             this.$.contentWrapper.classList.add('animating');
@@ -459,7 +464,7 @@ method is called on the element.
          * Focuses the configured focus target.
          */
         _focusContent: function() {
-          console.debug('iron-input-select-dropdown._focusContent() this._focusTarget:',this._focusTarget);
+          if (this.debug) console.debug('iron-input-select-dropdown._focusContent() this._focusTarget:',this._focusTarget);
           // NOTE(cdata): This is async so that it can attempt the focus after
           // `display: none` is removed from the element.
           this.async(function() {
